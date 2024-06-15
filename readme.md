@@ -1,4 +1,4 @@
-# Prototipo de Sistema de Asistencia
+# Prototipo de Interfaz de login y sign up
 
 ![Cuenta creacion/ingreso](login.png)
 
