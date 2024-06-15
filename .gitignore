@@ -1,20 +1,23 @@
-# Created by https://www.toptal.com/developers/gitignore/api/react
-# Edit at https://www.toptal.com/developers/gitignore?templates=react
+# Created by https://www.toptal.com/developers/gitignore/api/vue,vuejs
+# Edit at https://www.toptal.com/developers/gitignore?templates=vue,vuejs
 
-### react ###
-.DS_*
-*.log
-logs
-**/*.backup.*
-**/*.back.*
+### Vue ###
+# gitignore template for Vue.js projects
+#
+# Recommended template: Node.gitignore
 
-node_modules
-bower_components
+# TODO: where does this rule come from?
+docs/_book
 
-*.sublime*
+# TODO: where does this rule come from?
+test/
 
-psd
-thumb
-sketch
+### Vuejs ###
+# Recommended template: Node.gitignore
 
-# End of https://www.toptal.com/developers/gitignore/api/react
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+# End of https://www.toptal.com/developers/gitignore/api/vue,vuejs
