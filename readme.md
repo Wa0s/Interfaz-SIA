@@ -1,19 +1,6 @@
-# Prototipo de Sistema de Asistencia
+# Prototipo de Pagina Principal
 
-![Sistema de asistencia](Prototipo.png)
+![Pagina Principal](Pagina Principal.png)
 
-### Pasos para iniciar el proyecto
+![Pagina Principal](bottom.png)
 
-Primero ingrese a la carpeta frontend e ingrese los siguientes comandos
-
-#### Instalar paquetes
-```bash
-bun i
-```
-
-#### Correr el servidor
-```bash
-bun run dev
-```
-
-## Josse Manuel Gallegos Zuñiga 
