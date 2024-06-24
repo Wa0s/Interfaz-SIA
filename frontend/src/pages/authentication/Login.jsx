@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { loginReq } from '../../api/users'
 import jinis from "../../assets/jinis.png"
 import { Field, Form, Formik } from 'formik'
+import toast from 'react-hot-toast'
 
 
 export default function Login({ open, setOpen }) {
@@ -19,9 +20,11 @@ export default function Login({ open, setOpen }) {
       queryClient.invalidateQueries("users")
       navigate("/asistencia")
       console.log("loginMutation success")
+      toast.success('Inicio de Sesion Correcto :D')
     },
     onError: (error) => {
       console.error(error)
+      toast.error("Contraseña o Correo Incorrecto")
     }
   })
 

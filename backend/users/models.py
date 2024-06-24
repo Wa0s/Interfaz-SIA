@@ -81,7 +81,8 @@ class Ponente(AbstractBaseUser, PermissionsMixin):
 class Participante(AbstractBaseUser, PermissionsMixin):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     codigo = models.CharField(max_length=100, unique=True)
-    
+    registro = models.BooleanField(default=False)
+
     USERNAME_FIELD = "email"
     # codigo_grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
     groups = models.ManyToManyField(

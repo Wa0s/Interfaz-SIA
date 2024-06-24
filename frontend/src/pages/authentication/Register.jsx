@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { registerReq } from '../../api/users'
 import { useMutation } from '@tanstack/react-query'
 import jinis from "../../assets/jinis.png"
+import toast from 'react-hot-toast'
 
 export default function Register({ open, setOpen }) {
   // const [open, setOpen] = useState(false)
@@ -15,9 +16,16 @@ export default function Register({ open, setOpen }) {
     onSuccess: () => {
       navigate("/")
       console.log("loginMutation success")
+      toast.success('Te registraste correctamente :D')
+      setOpen(false)
     },
     onError: (error) => {
-      console.error(error)
+      // console.error(error)
+      // toast.error("This didn't work.")
+      if (error.response?.status === 400) {
+        toast.error("Email ya registrado")
+      }
+
     }
   })
 

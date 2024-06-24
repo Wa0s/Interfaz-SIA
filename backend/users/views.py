@@ -113,6 +113,9 @@ def registerPonente(request):
 @api_view(['POST'])
 def registerParticipante(request):
     data = request.data
+    if User.objects.filter(email=data['email']).exists():
+        return Response({'error': 'El email ya está en uso'}, status=status.HTTP_400_BAD_REQUEST)
+    
     user = User.objects.create(
         email=data['email'],
         nombre=data['nombre'],
