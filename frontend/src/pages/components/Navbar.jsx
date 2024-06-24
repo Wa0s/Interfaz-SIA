@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import {
   Disclosure,
   DisclosureButton,
@@ -11,7 +11,12 @@ import {
 } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { PlusIcon } from '@heroicons/react/20/solid'
-import userImage from "./assets/user.png"
+import userImage from "../../assets/user.png"
+import Modal from '../authentication/Modal'
+import Register from '../authentication/Register'
+import { Link, useNavigate } from 'react-router-dom'
+import { imagenUser } from '../../api/useAxios'
+import Login from '../authentication/Login'
 
 const user = {
   name: 'Tom Cook',
@@ -20,9 +25,10 @@ const user = {
     userImage
 }
 const navigation = [
-  { name: 'QR', href: '#', current: true },
-  { name: 'Foro', href: '#', current: true },
+  { name: 'QR', href: '/qr', current: true },
+  { name: 'Foro', href: '/foro', current: true },
   { name: 'Ponentes', href: '#', current: true },
+  { name: 'Asistencia', href: '/asistencia', current: true },
   // { name: 'Calendar', href: '#', current: false },
 ]
 const userNavigation = [
@@ -36,27 +42,36 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+
+  const nav = useNavigate()
+
+  function logout() {
+    localStorage.clear()
+    nav('/login')
+  }
+
+
+  const username = localStorage.getItem('nombre');
+  // console.log(username)}
+  console.log(localStorage.getItem('foto'));
+  const foto = imagenUser(localStorage.getItem('foto'));
+  console.log((foto)); 
+
+  // const username = true
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
+
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {username != null ? (
             <div className="flex h-16 justify-between">
               <div className="flex">
-                <div className="-ml-2 mr-2 flex items-center md:hidden">
-                  {/* Mobile menu button */}
-                  <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                    <span className="absolute -inset-0.5" />
-                    <span className="sr-only">Open main menu</span>
-                    {open ? (
-                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                    )}
-                  </DisclosureButton>
-                </div>
-                
-                <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+                <div className="md:ml-6 md:flex md:items-center md:space-x-4">
                   {navigation.map((item) => (
                     <a
                       key={item.name}
@@ -74,7 +89,7 @@ export default function Navbar() {
               </div>
               <div className="flex items-center">
                 
-                <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center mr-5">
+                <div className="md:ml-4 md:flex md:flex-shrink-0 md:items-center mr-5">
                   
 
                   {/* Profile dropdown */}
@@ -95,6 +110,7 @@ export default function Navbar() {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+
                         {userNavigation.map((item) => (
                           <MenuItem key={item.name}>
                             {({ focus }) => (
@@ -115,16 +131,33 @@ export default function Navbar() {
                   </Menu>
                 </div>
                 <div className="flex-shrink-0">
-                  <button
-                    type="button"
+                  <Link to={'/'} onClick={logout}
                     className="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                   >
                     
                     Salir
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
+            ) : (
+              <div className="flex items-center">
+                <div className='relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                  <div className="md:ml-4 md:flex md:flex-shrink-0 md:items-center mr-5">
+                    <button 
+                    className='relative m-3 inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+                    onClick={() => setIsModalOpen(true)}
+                    >Iniciar Sesion</button>
+                    <Login open={isModalOpen} setOpen={setIsModalOpen} />
+                    <button
+                      className="relative m-3 inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      onClick={() => setIsModalOpen2(true)}
+                    >Registrarse</button>
+                    <Register open={isModalOpen2} setOpen={setIsModalOpen2} />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           

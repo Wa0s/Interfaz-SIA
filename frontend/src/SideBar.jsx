@@ -41,16 +41,17 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import Navbar from './Navbar'
+import Navbar from './pages/components/Navbar'
 import Tabla from './Tabla'
+import { Link, useNavigate } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: false },
-  { name: 'Asistencia', href: '#', icon: UserPlusIcon, current: true },
-  { name: 'Programas', href: '#', icon: BriefcaseIcon, current: false },
-  { name: 'Articulos', href: '#', icon: FolderIcon, current: false },
-  { name: 'Proyectos', href: '#', icon: ComputerDesktopIcon, current: false },
-  { name: 'About us', href: '#', icon: QuestionMarkCircleIcon, current: false },
+  { name: 'Home', href: '/', icon: HomeIcon, current: false },
+  { name: 'Asistencia', href: '/asistencia', icon: UserPlusIcon, current: true },
+  // { name: 'Programas', href: '/programas', icon: BriefcaseIcon, current: false },
+  // { name: 'Articulos', href: '/articulos', icon: FolderIcon, current: false },
+  // { name: 'Proyectos', href: '/proyectos', icon: ComputerDesktopIcon, current: false },
+  // { name: 'About us', href: '/about', icon: QuestionMarkCircleIcon, current: false },
 ]
 const userNavigation = [
   { name: 'Your profile', href: '#' },
@@ -64,6 +65,8 @@ function classNames(...classes) {
 export default function SideBar() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
+  const nav = useNavigate()
+
   return (
     <>
       {/*
@@ -75,8 +78,8 @@ export default function SideBar() {
         ```
       */}
       <div>
-        <Transition show={sidebarOpen}>
-          <Dialog className="relative z-50 lg:hidden" onClose={setSidebarOpen}>
+        {/* <Transition show={sidebarOpen}>
+          <Dialog className="relative z-50 lg:hidden " onClose={setSidebarOpen}>
             <TransitionChild
               enter="transition-opacity ease-linear duration-300"
               enterFrom="opacity-0"
@@ -113,7 +116,7 @@ export default function SideBar() {
                       </button>
                     </div>
                   </TransitionChild>
-                  {/* Sidebar component, swap this element with another sidebar if you like */}
+
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
                       <img
@@ -128,8 +131,9 @@ export default function SideBar() {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
-                                  href={item.href}
+                                <button
+                                  onClick={nav(item.href)}
+                                  to={item.href}
                                   className={classNames(
                                     item.current
                                       ? 'bg-indigo-700 text-white'
@@ -145,7 +149,7 @@ export default function SideBar() {
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
+                                </button>
                               </li>
                             ))}
                           </ul>
@@ -159,11 +163,10 @@ export default function SideBar() {
               </TransitionChild>
             </div>
           </Dialog>
-        </Transition>
+        </Transition> */}
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-          {/* Sidebar component, swap this element with another sidebar if you like */}
+        {/* <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
               <img
@@ -216,10 +219,10 @@ export default function SideBar() {
               </ul>
             </nav>
           </div>
-        </div>
+        </div> */}
 
-        <div className="lg:pl-72">
-          <Navbar />
+        <div className="">
+          {/* <Navbar /> */}
           <Tabla />
           <main className="py-10">
             <div className="px-4 sm:px-6 lg:px-8">{/* Your content */}</div>
