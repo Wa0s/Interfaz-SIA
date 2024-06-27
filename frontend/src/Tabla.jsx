@@ -147,7 +147,7 @@ export default function Tabla() {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700">Phone</label>
+              <label className="block text-gray-700">Telefono</label>
               <input
                 type="text"
                 name="telefono"
