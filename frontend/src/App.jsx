@@ -9,7 +9,7 @@ import { Home } from './pages/home/Home'
 // import LoginPage from './pages/Authentication/DocenteLoginPage'
 import Layout from './pages/layout/Layout'
 import { QR } from './pages/qr/QR'
-import { Foro } from './pages/foro/Foro'
+import Ponentes from './pages/ponentes/Ponentes';
 // import { Home } from "./pages/Home"
 // import LoginPage from "./pages/Authentication/LoginPage"
 // import RegisterPage from "./pages/Authentication/RegisterPage"
@@ -32,7 +32,7 @@ function App() {
             {/* <Route index element={<Home/>} /> */}
             <Route path='/asistencia' element={<SideBar />} />
             <Route path='/qr' element={<QR />} />
-            <Route path='/foro' element={<Foro />} />
+            <Route path="/ponentes" element={<Ponentes />} />
             {/* <Route path='/consolidado' element={<Consolidado/>} /> */}
             {/* <Route path='product/:name' element={<SoloProduct/>} />
             <Route path='cart/' element={<Order/>} />
