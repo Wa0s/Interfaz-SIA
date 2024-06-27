@@ -36,7 +36,7 @@ function App() {
             <Route path='/qr' element={<QR />} />
             <Route path="/ponentes" element={<Ponentes />} />
             <Route path="/bloques" element={<Bloques />} />
-            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
             {/* <Route path='/consolidado' element={<Consolidado/>} /> */}
             {/* <Route path='product/:name' element={<SoloProduct/>} />
             <Route path='cart/' element={<Order/>} />

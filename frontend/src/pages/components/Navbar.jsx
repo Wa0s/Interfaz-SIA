@@ -31,7 +31,7 @@ const navigation = [
   { name: 'Ponentes', href: '/ponentes', current: true },
   { name: 'Asistencia', href: '/asistencia', current: true },
   { name: 'Bloques', href: '/bloques', current: true },
-  { name: 'Profile', href: '/profile', current: true },
+  // { name: 'Profile', href: '/profile', current: true },
   // { name: 'Calendar', href: '#', current: false },
 ]
 const userNavigation = [
