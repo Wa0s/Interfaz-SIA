@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { participantes } from './api/users';
 
 const people = [
   { id: '001', nombre: 'Adam Smith', fecha: '05/01/2024', email: 'adamsmith@email.com', telefono: "123456", porcentaje: "80%" },
@@ -43,6 +44,8 @@ export default function Tabla() {
       porcentaje: ''
     });
   };
+
+  console.log(participantes());
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">

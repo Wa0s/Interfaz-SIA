@@ -10,6 +10,8 @@ import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { QR } from './pages/qr/QR'
 import Ponentes from './pages/ponentes/Ponentes';
+import Bloques from './pages/bloques/Bloques'
+import { Profile } from './pages/asistencia/Profile'
 // import { Home } from "./pages/Home"
 // import LoginPage from "./pages/Authentication/LoginPage"
 // import RegisterPage from "./pages/Authentication/RegisterPage"
@@ -33,6 +35,8 @@ function App() {
             <Route path='/asistencia' element={<SideBar />} />
             <Route path='/qr' element={<QR />} />
             <Route path="/ponentes" element={<Ponentes />} />
+            <Route path="/bloques" element={<Bloques />} />
+            <Route path="/profile" element={<Profile />} />
             {/* <Route path='/consolidado' element={<Consolidado/>} /> */}
             {/* <Route path='product/:name' element={<SoloProduct/>} />
             <Route path='cart/' element={<Order/>} />

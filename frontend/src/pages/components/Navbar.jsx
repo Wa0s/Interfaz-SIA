@@ -17,6 +17,7 @@ import Register from '../authentication/Register'
 import { Link, useNavigate } from 'react-router-dom'
 import { imagenUser } from '../../api/useAxios'
 import Login from '../authentication/Login'
+import RegisterPonente from '../authentication/RegisterPonente'
 
 const user = {
   name: 'Tom Cook',
@@ -26,9 +27,11 @@ const user = {
 }
 const navigation = [
   { name: 'QR', href: '/qr', current: true },
-  { name: 'Foro', href: '/foro', current: true },
-  { name: 'Ponentes', href: '#', current: true },
+  // { name: 'Foro', href: '/foro', current: true },
+  { name: 'Ponentes', href: '/ponentes', current: true },
   { name: 'Asistencia', href: '/asistencia', current: true },
+  { name: 'Bloques', href: '/bloques', current: true },
+  { name: 'Profile', href: '/profile', current: true },
   // { name: 'Calendar', href: '#', current: false },
 ]
 const userNavigation = [
@@ -61,6 +64,7 @@ export default function Navbar() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isModalOpen3, setIsModalOpen3] = useState(false);
 
 
   return (
@@ -149,6 +153,13 @@ export default function Navbar() {
                     onClick={() => setIsModalOpen(true)}
                     >Iniciar Sesion</button>
                     <Login open={isModalOpen} setOpen={setIsModalOpen} />
+                    
+                    <button
+                      className="relative m-3 inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      onClick={() => setIsModalOpen3(true)}
+                    >Registrarse Ponente</button>
+                    <RegisterPonente open={isModalOpen3} setOpen={setIsModalOpen3} />
+
                     <button
                       className="relative m-3 inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                       onClick={() => setIsModalOpen2(true)}

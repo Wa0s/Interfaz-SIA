@@ -51,6 +51,7 @@ DJANGO_APPS = [
 ]
 PROJECT_APPS = [
     'users',
+    'jinis',
 ]
 THIRD_PARTY_APPS = [
     'rest_framework',
@@ -160,9 +161,9 @@ REST_FRAMEWORK = {
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-pe'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Lima'
 
 USE_I18N = True
 

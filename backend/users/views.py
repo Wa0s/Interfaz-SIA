@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from django.contrib.auth.hashers import make_password
 
+from rest_framework.permissions import AllowAny
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -20,7 +21,11 @@ from rest_framework import generics
 from rest_framework.decorators import api_view, permission_classes
 import datetime
 import random
+from django.shortcuts import get_object_or_404
 
+from django.http import JsonResponse
+from .models import Participante
+from django.db.models import Sum
 
 from rest_framework import generics, permissions
 from .models import Ponente, Participante
@@ -132,6 +137,25 @@ def registerParticipante(request):
     serializer = RegisterUserSerializer(estudiante, many=False)
     return Response(serializer.data)
 
+@api_view(['POST'])
+def asistencia(request, pk, format=None):
+    objeto = get_object_or_404(Participante, pk=pk)
+    objeto.asistencia += 1
+    objeto.save()
+    return Response({'status': 'Asistencia incrementada'}, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def participantes(request, format=None):
+    participantes = Participante.objects.all()
+    serializer = ParticipanteSerializer(participantes, many=True)
+    return Response(serializer.data)
 
 class LoginView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def total_asistencias(request):
+    total = Participante.objects.aggregate(total_asistencias=Sum('asistencia'))
+    return JsonResponse(total)
