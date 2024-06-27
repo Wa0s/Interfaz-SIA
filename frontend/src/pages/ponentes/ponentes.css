@@ -1,0 +1,64 @@
+
+.ponentes-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #cbd5e0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .ponentes-container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .ponentes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .ponentes-table th,
+  .ponentes-table td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .ponentes-table th {
+    background-color: #4a5568;
+    color: #ffffff;
+    font-size: 1.1em;
+  }
+  
+  .ponentes-table td {
+    background-color: #2d3748;
+    color: #cbd5e0;
+    font-size: 1em;
+  }
+  
+  .ponente-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .ponente-foto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .ponente-nombre {
+    font-weight: bold;
+  }
+  
+  .ponente-detalle {
+    color: #a0aec0;
+    font-size: 0.9em;
+  }
+  
